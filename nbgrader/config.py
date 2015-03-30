@@ -79,12 +79,6 @@ class BasicConfig(LinkedConfig):
         help="The date format used by logging formatters for %(asctime)s"
     )
 
-    log_format = Unicode(
-        "[%(name)s | %(levelname)s] %(message)s",
-        config=True,
-        help="The logging format template"
-    )
-
 
 class NbGraderConfig(LinkedConfig):
     """Config options that are common across nbgrader apps"""
