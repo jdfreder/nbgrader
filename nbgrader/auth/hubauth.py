@@ -88,7 +88,7 @@ class HubAuth(BaseAuth):
         })
         self.log.warn('Trying token "%s"' % self.proxy_token)
         if response.status_code != 201:
-            raise Exception('Error while trying to add JupyterHub route. {}: {}'.format(response.status_code, response.text))
+            self.log.warn('Error while trying to add JupyterHub route. {}: {}'.format(response.status_code, response.text))
         self._base_url = self.hub_base_url + self.remap_url
 
         # Redirect all formgrade request to the correct API method.
