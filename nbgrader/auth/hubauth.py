@@ -86,6 +86,7 @@ class HubAuth(BaseAuth):
         response = self._proxy_request('/api/routes' + self.remap_url, method='POST', body={
             'target': self._base_url
         })
+        self.log.warn('Trying token "%s"' % self.proxy_token)
         if response.status_code != 201:
             raise Exception('Error while trying to add JupyterHub route. {}: {}'.format(response.status_code, response.text))
         self._base_url = self.hub_base_url + self.remap_url
