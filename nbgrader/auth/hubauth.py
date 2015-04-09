@@ -77,6 +77,8 @@ class HubAuth(BaseAuth):
     def __init__(self, *args, **kwargs):
         super(HubAuth, self).__init__(*args, **kwargs)
 
+        print('hello world')
+
         # Create base URLs for the hub and proxy.
         self._hubapi_base_url = 'http://{}:{}'.format(self.hubapi_address, self.hubapi_port)
         self._proxy_base_url = 'http://{}:{}'.format(self.proxy_address, self.proxy_port)
@@ -87,8 +89,10 @@ class HubAuth(BaseAuth):
             'target': self._base_url
         })
         self.log.warn('Trying token "%s"' % self.proxy_token)
+        print('Trying token "%s"' % self.proxy_token)
         if response.status_code != 201:
             self.log.warn('Error while trying to add JupyterHub route. {}: {}'.format(response.status_code, response.text))
+            print('Error while trying to add JupyterHub route. {}: {}'.format(response.status_code, response.text))
         self._base_url = self.hub_base_url + self.remap_url
 
         # Redirect all formgrade request to the correct API method.
